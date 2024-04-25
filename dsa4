@@ -1,0 +1,51 @@
+// Part (d)
+void sortStudents() {
+    if (numStudents == 0) {
+        printf("No students found.\n");
+        return;
+    }
+
+    int choice;
+    printf("Sort by:\n");
+    printf("1. Name\n");
+    printf("2. Registration Number\n");
+    printf("Enter your choice: ");
+    scanf("%d", &choice);
+    getchar(); // Consume newline character
+
+    switch (choice) {
+        case 1:
+            for (int i = 0; i < numStudents - 1; i++) {
+                for (int j = 0; j < numStudents - i - 1; j++) {
+                    if (strcmp(students[j].name, students[j + 1].name) > 0) {
+                        Student temp = students[j];
+                        students[j] = students[j + 1];
+                        students[j + 1] = temp;
+                    }
+                }
+            }
+            printf("Students sorted by name:\n");
+            for (int i = 0; i < numStudents; i++) {
+                printf("%s\n", students[i].name);
+            }
+            break;
+        case 2:
+            for (int i = 0; i < numStudents - 1; i++) {
+                for (int j = 0; j < numStudents - i - 1; j++) {
+                    if (atoi(students[j].regNum) > atoi(students[j + 1].regNum)) {
+                        Student temp = students[j];
+                        students[j] = students[j + 1];
+                        students[j + 1] = temp;
+                    }
+                }
+            }
+            printf("Students sorted by registration number:\n");
+            for (int i = 0; i < numStudents; i++) {
+                printf("%s\n", students[i].regNum);
+            }
+            break;
+        default:
+            printf("Invalid choice.\n");
+            break;
+    }
+}
