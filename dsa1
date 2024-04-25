@@ -1,0 +1,16 @@
+// Part (a)
+#include <stdio.h>
+#include <string.h>
+
+#define MAX_NAME_LEN 50
+#define MAX_DOB_LEN 11
+#define REG_NUM_LEN 6
+#define MAX_PROG_CODE_LEN 4
+
+typedef struct {
+    char name[MAX_NAME_LEN];
+    char dob[MAX_DOB_LEN];
+    char regNum[REG_NUM_LEN];
+    char progCode[MAX_PROG_CODE_LEN];
+    float annualTuition;
+} Student;
