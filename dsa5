@@ -1,0 +1,71 @@
+// Part (e)
+void exportToFile() {
+    if (numStudents == 0) {
+        printf("No students found.\n");
+        return;
+    }
+
+    FILE *file = fopen("students.csv", "a");
+    if (file == NULL) {
+        printf("Error opening file.\n");
+        return;
+    }
+
+    for (int i = 0; i < numStudents; i++) {
+        fprintf(file, "%s,%s,%s,%s,%.2f\n", students[i].name, students[i].dob, students[i].regNum, students[i].progCode, students[i].annualTuition);
+    }
+
+    fclose(file);
+    printf("Students exported to students.csv successfully.\n");
+}
+
+int main() {
+    int choice;
+
+    do {
+        printf("\nStudent Management System\n");
+        printf("1. Create Student\n");
+        printf("2. Read Student\n");
+        printf("3. Update Student\n");
+        printf("4. Delete Student\n");
+        printf("5. Search Student\n");
+        printf("6. Sort Students\n");
+        printf("7. Export to File\n");
+        printf("8. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+        getchar(); // Consume newline character
+
+        switch (choice) {
+            case 1:
+                createStudent();
+                break;
+            case 2:
+                readStudent();
+                break;
+            case 3:
+                updateStudent();
+                break;
+            case 4:
+                deleteStudent();
+                break;
+            case 5:
+                searchStudent();
+                break;
+            case 6:
+                sortStudents();
+                break;
+            case 7:
+                exportToFile();
+                break;
+            case 8:
+                printf("Exiting program...\n");
+                break;
+            default:
+                printf("Invalid choice.\n");
+                break;
+        }
+    } while (choice != 8);
+
+    return 0;
+}
