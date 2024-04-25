@@ -1,0 +1,25 @@
+// Part (c)
+void searchStudent() {
+    if (numStudents == 0) {
+        printf("No students found.\n");
+        return;
+    }
+
+    int regNum;
+    printf("Enter registration number: ");
+    scanf("%d", &regNum);
+    getchar(); // Consume newline character
+
+    for (int i = 0; i < numStudents; i++) {
+        if (atoi(students[i].regNum) == regNum) {
+            printf("Name: %s\n", students[i].name);
+            printf("Date of Birth: %s\n", students[i].dob);
+            printf("Registration Number: %s\n", students[i].regNum);
+            printf("Program Code: %s\n", students[i].progCode);
+            printf("Annual Tuition: %.2f\n", students[i].annualTuition);
+            return;
+        }
+    }
+
+    printf("Student not found.\n");
+}
